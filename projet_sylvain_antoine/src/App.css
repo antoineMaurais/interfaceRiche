@@ -5,15 +5,20 @@
     width: 100%;
     margin: auto;
     overflow: hidden;
-    position: relative; /* Ajout d'une position relative pour utiliser dans le sélecteur suivant */
-  }
-  
-  .lecteur video {
-    max-width: 100%; /* Ajustement de la largeur maximale du lecteur vidéo */
-    height: auto; /* Ajustement automatique de la hauteur en fonction de la largeur */
-    position: absolute; /* Position absolue pour remplir le conteneur */
-    top: 0;
-    left: 0;
+    position: relative; 
   }
 
+.lecteur video {
+  max-width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.chapitres {
+  background-color: black;
+  color: white;
+  padding: 50px 10px;
+}
   

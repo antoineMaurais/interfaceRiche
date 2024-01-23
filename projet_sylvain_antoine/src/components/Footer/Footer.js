@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="footer-section">
-        <h3>Nitflex / projet interface riche by</h3>
+        <h3>Nitflex by</h3>
       </div>
       <div className="footer-section contact-section">
         <div className="contact-item">

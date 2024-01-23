@@ -1,22 +1,29 @@
 import './App.css';
-import {useEffect, useState} from "react";
-import {getData} from "./components/Services/servicesApi";
+import { useEffect, useState } from 'react';
+import { getData } from './components/Services/servicesApi';
 import Footer from './components/Footer/Footer';
 import LecteurVideo from './components/LecteurVideo/LecteurVideo';
 import BasicExample from './components/SideNavBar/SideNavBar';
-
+import Chapitres from './components/Chapitre/Chapitre';
 
 function App() {
-  const [data, setData] = useState({ Film: { title: '' }, Chapters: [], Waypoints: [], Keywords: [] });
+  const [data, setData] = useState({
+    Film: { title: '' },
+    Chapters: [],
+    Waypoints: [],
+    Keywords: [],
+  });
+  
+  const [selectedChapter, setSelectedChapter] = useState(null);
 
   const fetchData = async () => {
     try {
       const response = await getData();
       if (response.data) {
         const dataApi = response.data;
-        console.log("dataApi title : " + dataApi.Film.title);
+        console.log('dataApi title : ' + dataApi.Film.title);
 
-        return dataApi
+        return dataApi;
       } else {
         // Gérez les erreurs ici (par exemple, réponse non ok)
         console.error('Erreur lors de la récupération des donnnées 2');
@@ -29,12 +36,14 @@ function App() {
   };
 
   useEffect(() => {
-    fetchData().then(fetchedData => {
+    fetchData().then((fetchedData) => {
       setData(fetchedData);
     });
   }, []);
 
-  
+  const handleChapterClick = (pos) => {
+    setSelectedChapter(pos);
+  };
 
   return (
     <div className="App">
@@ -43,42 +52,42 @@ function App() {
       <p>{data.Film.title}</p>
 
       <h3>Chapters</h3>
-        {
-          data.Chapters.map((chapter, index) => (
-            <li key={index}>
-              {chapter.title} (Position: {chapter.pos})
+      {data.Chapters.map((chapter, index) => (
+        <li key={index}>
+          {chapter.title} (Position: {chapter.pos})
+        </li>
+      ))}
+
+      <h3>Waypoints</h3>
+      {data.Waypoints.map((waypoint, index) => (
+        <li key={index}>
+          {waypoint.label} (Lat: {waypoint.lat}, Lng: {waypoint.lng}, Timestamp: {waypoint.timestamp})
+        </li>
+      ))}
+
+      <h3>Keywords</h3>
+      {data.Keywords.map((keyword, index) => (
+        <div key={index}>
+          <h4>Position: {keyword.pos}</h4>
+
+          {keyword.data.map((item, idx) => (
+            <li key={idx}>
+              <a href={item.url} target="_blank" rel="noopener noreferrer">
+                {item.title}
+              </a>
             </li>
-          ))
-        }
-
-        <h3>Waypoints</h3>
-        {data.Waypoints.map((waypoint, index) => (
-            <li key={index}>
-              {waypoint.label} (Lat: {waypoint.lat}, Lng: {waypoint.lng}, Timestamp: {waypoint.timestamp})
-            </li>
-        ))}
-
-        <h3>Keywords</h3>
-        {data.Keywords.map((keyword, index) => (
-            <div key={index}>
-              <h4>Position: {keyword.pos}</h4>
-
-                {keyword.data.map((item, idx) => (
-                    <li key={idx}>
-                      <a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
-                    </li>
-                ))}
-
-            </div>
-        ))}
-
+          ))}
+        </div>
+      ))}
 
       <BasicExample></BasicExample>
 
-      <div className='lecteur'>
-        
+      <div className="chapitres">
+        <Chapitres chapters={data.Chapters} onChapterClick={(pos) => handleChapterClick(pos)} />
+      </div>
 
-        <LecteurVideo  filmLink={data.Film.file_url}></LecteurVideo>
+      <div className="lecteur">
+        <LecteurVideo filmLink={data.Film.file_url} initialTime={selectedChapter} />
       </div>
       <Footer></Footer>
     </div>
