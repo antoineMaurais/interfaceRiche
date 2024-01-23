@@ -6,6 +6,11 @@ import BasicExample from './components/SideNavBar/SideNavBar';
 
 import {useEffect, useState} from "react";
 import {getData} from "./components/Services/servicesApi";
+import Footer from './components/Footer/Footer';
+import LecteurVideo from './components/LecteurVideo/LecteurVideo';
+import BasicExample from './components/SideNavBar/SideNavBar';
+
+
 
 function App() {
   const [data, setData] = useState({ Film: { title: '' }, Chapters: [], Waypoints: [], Keywords: [] });
