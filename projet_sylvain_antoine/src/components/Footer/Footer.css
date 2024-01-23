@@ -1,0 +1,33 @@
+.footer {
+    background-color: black;
+    color: lightgrey;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid white; /* Ajout d'un trait blanc en haut du footer */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footer-section {
+    margin-bottom: 15px;
+  }
+  
+  .contact-section {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .contact-item {
+    margin: 0 10px;
+  }
+  
+  .footer a {
+    color: lightgrey;
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    text-decoration: underline;
+  }
+  
