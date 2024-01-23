@@ -45,6 +45,7 @@ function App() {
   return (
     <div className="App">
       <h3>Title</h3>
+      <p>{data.Film.file_url}</p>
       <p>{data.Film.title}</p>
 
       <h3>Chapters</h3>
@@ -83,7 +84,7 @@ function App() {
       <div className='lecteur'>
         
 
-        <LecteurVideo></LecteurVideo>
+        <LecteurVideo  filmLink={data.Film.file_url}></LecteurVideo>
       </div>
       <Footer></Footer>
     </div>
