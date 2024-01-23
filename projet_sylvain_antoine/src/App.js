@@ -6,6 +6,8 @@ import LecteurVideo from './components/LecteurVideo/LecteurVideo';
 import BasicExample from './components/SideNavBar/SideNavBar';
 
 
+import {useEffect, useState} from "react";
+import {getData} from "./components/Services/servicesApi";
 
 function App() {
   const [data, setData] = useState({ Film: { title: '' }, Chapters: [], Waypoints: [], Keywords: [] });
