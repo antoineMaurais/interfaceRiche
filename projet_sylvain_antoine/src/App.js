@@ -1,18 +1,10 @@
 import './App.css';
-import Footer from './components/Footer/Footer';
-import LecteurVideo from './components/LecteurVideo/LecteurVideo';
-import BasicExample from './components/SideNavBar/SideNavBar';
-
-
 import {useEffect, useState} from "react";
 import {getData} from "./components/Services/servicesApi";
 import Footer from './components/Footer/Footer';
 import LecteurVideo from './components/LecteurVideo/LecteurVideo';
 import BasicExample from './components/SideNavBar/SideNavBar';
 
-
-import {useEffect, useState} from "react";
-import {getData} from "./components/Services/servicesApi";
 
 function App() {
   const [data, setData] = useState({ Film: { title: '' }, Chapters: [], Waypoints: [], Keywords: [] });
@@ -42,33 +34,7 @@ function App() {
     });
   }, []);
 
-  const [data, setData] = useState({ Film: { title: '' }, Chapters: [] });
-
-
-  const fetchData = async () => {
-    try {
-      const response = await getData();
-      if (response.data) {
-        const dataApi = response.data;
-        console.log("dataApi title : " + dataApi.Film.title);
-
-        return dataApi
-      } else {
-        // Gérez les erreurs ici (par exemple, réponse non ok)
-        console.error('Erreur lors de la récupération des donnnées 2');
-        return [];
-      }
-    } catch (error) {
-      console.error('Erreur lors de la récupération des donnnées 1 :', error);
-      return [];
-    }
-  };
-
-  useEffect(() => {
-    fetchData().then(fetchedData => {
-      setData(fetchedData);
-    });
-  }, []);
+  
 
   return (
     <div className="App">
