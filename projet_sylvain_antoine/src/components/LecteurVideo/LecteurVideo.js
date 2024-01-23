@@ -1,18 +1,40 @@
-import React, { useRef, useEffect } from 'react';
+// LecteurVideo.js
+import React, { useRef, useEffect, useState } from 'react';
 import { Player } from 'video-react';
-import '../../../node_modules/video-react/dist/video-react.css';
+import "../../../node_modules/video-react/dist/video-react.css";
 
-function LecteurVideo({ filmLink, initialTime }) {
+function LecteurVideo({ filmLink, initialTime, onTimeUpdate }) {
   const playerRef = useRef(null);
+  const [isMounted, setIsMounted] = useState(true);
+
+  const handleTimeUpdate = (state) => {
+    if (isMounted) {
+      onTimeUpdate(state.currentTime);
+    }
+  };
 
   useEffect(() => {
-    if (playerRef.current && initialTime !== null && initialTime !== undefined) {
-      playerRef.current.seek(initialTime);
+    setIsMounted(true);
+
+    if (playerRef.current) {
+      playerRef.current.subscribeToStateChange(handleTimeUpdate);
+      if (initialTime !== undefined) {
+        playerRef.current.seek(initialTime);
+      }
     }
+
+    return () => {
+      setIsMounted(false);
+    };
   }, [initialTime]);
 
   return (
-    <Player ref={playerRef} playsInline src={filmLink} />
+    <Player
+      ref={playerRef}
+      playsInline
+      src={filmLink}
+      currentTime={initialTime}
+    />
   );
 }
 

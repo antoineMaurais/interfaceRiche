@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import LecteurVideo from './components/LecteurVideo/LecteurVideo';
 import BasicExample from './components/SideNavBar/SideNavBar';
 import Chapitres from './components/Chapitre/Chapitre';
+import MotsCles from './components/KeyWord/MotsCles';
 
 function App() {
   const [data, setData] = useState({
@@ -13,8 +14,9 @@ function App() {
     Waypoints: [],
     Keywords: [],
   });
-  
+
   const [selectedChapter, setSelectedChapter] = useState(null);
+  const [currentTime, setCurrentTime] = useState(0);
 
   const fetchData = async () => {
     try {
@@ -22,15 +24,13 @@ function App() {
       if (response.data) {
         const dataApi = response.data;
         console.log('dataApi title : ' + dataApi.Film.title);
-
         return dataApi;
       } else {
-        // Gérez les erreurs ici (par exemple, réponse non ok)
-        console.error('Erreur lors de la récupération des donnnées 2');
+        console.error('Erreur lors de la récupération des données 2');
         return [];
       }
     } catch (error) {
-      console.error('Erreur lors de la récupération des donnnées 1 :', error);
+      console.error('Erreur lors de la récupération des données 1 :', error);
       return [];
     }
   };
@@ -42,7 +42,12 @@ function App() {
   }, []);
 
   const handleChapterClick = (pos) => {
+    console.log(`Chapitre cliqué à la position ${pos}`);
     setSelectedChapter(pos);
+  };
+
+  const handleTimeUpdate = (time) => {
+    setCurrentTime(time);
   };
 
   return (
@@ -87,8 +92,17 @@ function App() {
       </div>
 
       <div className="lecteur">
-        <LecteurVideo filmLink={data.Film.file_url} initialTime={selectedChapter} />
+        <LecteurVideo
+          filmLink={data.Film.file_url}
+          initialTime={selectedChapter}
+          onTimeUpdate={handleTimeUpdate}
+        />
       </div>
+
+      <div className="motsCles">
+        <MotsCles keywords={data.Keywords} currentTime={currentTime} />
+      </div>
+
       <Footer></Footer>
     </div>
   );
