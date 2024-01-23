@@ -3,8 +3,7 @@ import {useEffect, useState} from "react";
 import {getData} from "./components/Services/servicesApi";
 
 function App() {
-  const [data, setData] = useState({ Film: { title: '' }, Chapters: [] });
-
+  const [data, setData] = useState({ Film: { title: '' }, Chapters: [], Waypoints: [], Keywords: [] });
 
   const fetchData = async () => {
     try {
