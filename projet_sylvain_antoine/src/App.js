@@ -6,6 +6,9 @@ import LecteurVideo from './components/LecteurVideo/LecteurVideo';
 import BasicExample from './components/SideNavBar/SideNavBar';
 import Chapitres from './components/Chapitre/Chapitre';
 import MotsCles from './components/KeyWord/MotsCles';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function App() {
   const [data, setData] = useState({
@@ -86,24 +89,46 @@ function App() {
       ))}
 
       <BasicExample></BasicExample>
+    <Container fluid >
+      <Row style={{ height: '450px' }}  id='video'>
+        <Col md={1}></Col>
+        {/* Colonne pour la liste des chapitres */}
+        <Col md={2} className="sidebar">
+          <div className="chapitres">
+            <Chapitres chapters={data.Chapters} onChapterClick={(pos) => handleChapterClick(pos)} />
+          </div>
+        </Col>
 
-      <div className="chapitres">
-        <Chapitres chapters={data.Chapters} onChapterClick={(pos) => handleChapterClick(pos)} />
-      </div>
+        {/* Colonne pour le lecteur vidéo */}
+        <Col md={6} className="main-content" >
+          <LecteurVideo
+            filmLink={data.Film.file_url}
+            initialTime={selectedChapter}
+            onTimeUpdate={handleTimeUpdate}
+          />
+        </Col>
 
-      <div className="lecteur">
-        <LecteurVideo
-          filmLink={data.Film.file_url}
-          initialTime={selectedChapter}
-          onTimeUpdate={handleTimeUpdate}
-        />
-      </div>
-
-      <div className="motsCles">
+        {/* Colonne pour le futur chat */}
+        <Col md={2}>
+          <div>
+            <h4 style={{color: "red"}}>Chat</h4>
+          </div>
+        </Col>
+        <Col md={1}></Col>
+      </Row>
+      <div className='motsCles'>
         <MotsCles keywords={data.Keywords} currentTime={currentTime} />
       </div>
-
-      <Footer></Footer>
+      <div id='map'>
+          <h4 style={{color: "red"}}>Carte</h4>
+      </div>
+      {/* Footer en bas de la page */}
+      <Row>
+        <Col>
+          <Footer />
+        </Col>
+      </Row>
+    </Container>
     </div>
   );
 }

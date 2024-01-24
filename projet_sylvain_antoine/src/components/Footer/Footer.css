@@ -1,5 +1,5 @@
 .footer {
-    background-color: black;
+    background-color: #212529;;
     color: lightgrey;
     padding: 20px;
     text-align: center;
@@ -29,5 +29,7 @@
   
   .footer a:hover {
     text-decoration: underline;
+    color: #dc3545;
   }
+  
   

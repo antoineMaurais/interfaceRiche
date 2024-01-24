@@ -1,0 +1,27 @@
+.centered-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh; /* 100% de la hauteur de la vue */
+  }
+  
+.keywords-container {
+    margin-top: 20px; /* Ajustez selon vos préférences */
+}
+
+.keyword-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px; /* Ajustez selon vos préférences */
+}
+
+.keyword-group h4 {
+    margin-bottom: 10px; /* Ajustez selon vos préférences */
+}
+
+.highlight {
+    color: #dc3545;
+}

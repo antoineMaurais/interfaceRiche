@@ -1,29 +1,21 @@
-.lecteur {
-    display: flex;
-    justify-content: center;
-    max-width: 60%;
-    width: 100%;
-    margin: auto;
-    overflow: hidden;
-    position: relative; 
-  }
-
-.lecteur video {
-  max-width: 100%;
-  height: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
+.App {
+  background-color: lightgray;
+  color: black;
 }
 
-.chapitres {
-  background-color: black;
-  color: white;
+/* Ajoutez ces classes CSS pour définir la hauteur et le style de défilement des colonnes */
+.sidebar {
+  height: 80vh; /* 100% de la hauteur de la vue */
+  overflow-y: auto; /* Défilement vertical si nécessaire */
+}
+
+/* Ajoutez ces classes CSS pour styliser la liste des chapitres et les mots clés */
+.sidebar {
+
   padding: 50px 10px;
 }
-  
+
+
 .motsCles {
-  background-color: black;
-  color: white;
-  padding: 50px 10px;
+  margin: 20px;
 }
