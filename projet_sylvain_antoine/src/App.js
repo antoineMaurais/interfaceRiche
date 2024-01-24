@@ -122,13 +122,11 @@ function App() {
       <div id='map'>
           <h4 style={{color: "red"}}>Carte</h4>
       </div>
-      {/* Footer en bas de la page */}
-      <Row>
-        <Col>
-          <Footer />
-        </Col>
-      </Row>
+      
+        
     </Container>
+    {/* Footer en bas de la page */}
+    <Footer />
     </div>
   );
 }

@@ -3,7 +3,6 @@
     color: lightgrey;
     padding: 20px;
     text-align: center;
-    border-top: 2px solid white; /* Ajout d'un trait blanc en haut du footer */
     display: flex;
     flex-direction: column;
     align-items: center;
