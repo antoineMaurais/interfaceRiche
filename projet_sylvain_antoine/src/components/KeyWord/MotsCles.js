@@ -20,7 +20,7 @@ function MotsCles({ keywords, currentTime }) {
           <Col key={index} className="keyword-group">
             {keywordGroup.data.map((item, idx) => (
               <Button
-              style={{ margin: '5px' }}
+                style={{ margin: '5px' }}
                 key={idx}
                 variant="outline-danger"
                 href={item.url}
