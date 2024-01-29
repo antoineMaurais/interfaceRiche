@@ -10,7 +10,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MapChart from "./components/MapChart/MapChart";
-import ChatComponent from "./components/Chat/Chat";
+import StyleChat from "./components/Chat/StyleChat";
 
 function App() {
   const [data, setData] = useState({
@@ -115,10 +115,7 @@ function App() {
 
           {/* Colonne pour le futur chat */}
           <Col xs={12} md={4} lg={4} xl={4}>
-            <div>
-              <h4 style={{color: "red"}}>Chat</h4>
-              <ChatComponent username={"Sylvain"}/>
-            </div>
+            <StyleChat username={"Sylvain"}/>
           </Col>
         </Row>
 
