@@ -3,6 +3,13 @@
   color: black;
 }
 
+.navBar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
 /* Ajoutez ces classes CSS pour définir la hauteur et le style de défilement des colonnes */
 .sidebar {
   height: 80vh; /* 100% de la hauteur de la vue */
@@ -11,10 +18,12 @@
 
 /* Ajoutez ces classes CSS pour styliser la liste des chapitres et les mots clés */
 .sidebar {
-
   padding: 50px 10px;
 }
 
+.main-content {
+  margin: 50px 0px;
+}
 
 .motsCles {
   margin: 20px;

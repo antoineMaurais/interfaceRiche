@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { getData } from './components/Services/servicesApi';
 import Footer from './components/Footer/Footer';
 import LecteurVideo from './components/LecteurVideo/LecteurVideo';
-import BasicExample from './components/SideNavBar/SideNavBar';
+import NitFlexNavBar from './components/SideNavBar/SideNavBar';
 import Chapitres from './components/Chapitre/Chapitre';
 import MotsCles from './components/KeyWord/MotsCles';
 import Container from 'react-bootstrap/Container';
@@ -92,11 +92,16 @@ function App() {
       {/*    ))}*/}
       {/*  </div>*/}
       {/*))}*/}
-      <BasicExample></BasicExample>
-      <Container fluid >
-        <Row style={{ height: '450px' }}  id='video'>
+      <div className='navBar'>
+      <NitFlexNavBar></NitFlexNavBar>
+
+      </div>
+      <Container>
+
+      
+        <Row style={{ height: '650px', padding: '50px 0px'}}  id='video'>
           {/* Colonne pour la liste des chapitres */}
-          <Col xs={12} md={2} lg={2} xl={2} className="sidebar">
+          <Col xs={12} md={2} lg={2} xl={2} className="sidebar" style={{ height: '600px'}}>
             <div className="chapitres">
               <Chapitres
                   chapters={data.Chapters}
@@ -105,7 +110,7 @@ function App() {
           </Col>
 
           {/* Colonne pour le lecteur vidéo */}
-          <Col xs={12} md={6} lg={6} xl={6} className="main-content" >
+          <Col xs={12} md={7} lg={7} xl={7} style={{ margin: '50px 0px'}} >
             <LecteurVideo
               filmLink={data.Film.file_url}
               initialTime={selectedChapter}
@@ -114,14 +119,15 @@ function App() {
           </Col>
 
           {/* Colonne pour le futur chat */}
-          <Col xs={12} md={4} lg={4} xl={4}>
+          <Col xs={12} md={3} lg={3} xl={3} style={{ height: '600px'}}>
             <StyleChat username={"Sylvain"}/>
           </Col>
         </Row>
+      
 
         <Row>
           <Col xs={12} md={12} lg={12} xl={12}>
-            <div className='motsCles'>
+            <div>
               <MotsCles
                   keywords={data.Keywords}
                   currentTime={currentTime} />
@@ -130,18 +136,32 @@ function App() {
         </Row>
 
         <Row>
-          <div id='map' className="map-container">
-              <h4 style={{color: "red"}}>Carte</h4>
-            <MapChart
-                waypoints={data.Waypoints}
-                currentTime={currentTime}
-                onMarkerClick={(pos) => handleMarkerClick(pos)}/>
+          <div id='map' style={{marginTop: '20px'}}>
+            <Row>
+              <Col md={{ span: 4, offset: 2 }}>
+                <h4 style={{color: "red"}}>Carte du road trip</h4>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={{ span: 8, offset: 2 }}>
+                <MapChart
+                  waypoints={data.Waypoints}
+                  currentTime={currentTime}
+                  onMarkerClick={(pos) => handleMarkerClick(pos)}/>
+              </Col>
+            </Row>
+              
+            
           </div>
         </Row>
 
+        </Container>
 
-      </Container>
-    <Footer />
+
+    <div id='contact'>
+      <Footer />
+
+    </div>
     </div>
   );
 }

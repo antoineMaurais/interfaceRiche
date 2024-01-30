@@ -32,7 +32,7 @@ const MapChart = ({ waypoints, currentTime, onMarkerClick }) => {
     );
 
     return (
-        <ComposableMap projection="geoAlbersUsa">
+<ComposableMap projection="geoAlbersUsa">
             <Geographies geography={geoUrl}>
                 {({ geographies }) => (
                     <>
@@ -88,7 +88,7 @@ const MapChart = ({ waypoints, currentTime, onMarkerClick }) => {
                     </>
                 )}
             </Geographies>
-        </ComposableMap>
+        </ComposableMap>        
     );
 };
 
