@@ -63,6 +63,8 @@ function App() {
       {/*<h3>Title</h3>*/}
       {/*<p>{data.Film.file_url}</p>*/}
       {/*<p>{data.Film.title}</p>*/}
+      {/*<p>{data.Film.synopsis_url}</p>*/}
+      
 
       {/*<h3>Chapters</h3>*/}
       {/*{data.Chapters.map((chapter, index) => (*/}
@@ -97,6 +99,14 @@ function App() {
 
       </div>
       <Container>
+        <Row style={{paddingTop: '100px'}}>
+          <Col md={{ span: 4, offset: 4 }}>
+                <h4 style={{color: "red"}}>{data.Film.title}</h4>
+          </Col>
+          <Col md={{ span: 4}}>
+                <a href={data.Film.synopsis_url}>Synopsis</a>
+          </Col>
+        </Row>
 
       
         <Row style={{ height: '650px', padding: '50px 0px'}}  id='video'>
