@@ -3,11 +3,11 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 100vh; /* 100% de la hauteur de la vue */
+    height: 100vh; 
   }
   
 .keywords-container {
-    margin-top: 20px; /* Ajustez selon vos préférences */
+    margin-top: 20px; 
 }
 
 .keyword-group {
@@ -15,13 +15,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 20px; /* Ajustez selon vos préférences */
+    margin-top: 20px; 
 }
 
 .keyword-group h4 {
-    margin-bottom: 10px; /* Ajustez selon vos préférences */
-}
-
-.highlight {
-    color: #dc3545;
+    margin-bottom: 10px; 
 }
