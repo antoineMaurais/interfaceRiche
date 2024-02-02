@@ -45,12 +45,10 @@ function App() {
   }, []);
 
   const handleChapterClick = (pos) => {
-    // console.log(`Chapitre cliqué à la position ${pos}`);
     setSelectedChapter(pos);
   };
 
   const handleMarkerClick = (pos) => {
-    // console.log(`Point cliqué à la position ${pos}`);
     setSelectedChapter(pos);
   };
 
@@ -60,43 +58,8 @@ function App() {
 
   return (
     <div className="App">
-      {/*<h3>Title</h3>*/}
-      {/*<p>{data.Film.file_url}</p>*/}
-      {/*<p>{data.Film.title}</p>*/}
-      {/*<p>{data.Film.synopsis_url}</p>*/}
-      
-
-      {/*<h3>Chapters</h3>*/}
-      {/*{data.Chapters.map((chapter, index) => (*/}
-      {/*  <li key={index}>*/}
-      {/*    {chapter.title} (Position: {chapter.pos})*/}
-      {/*  </li>*/}
-      {/*))}*/}
-
-      {/*<h3>Waypoints</h3>*/}
-      {/*{data.Waypoints.map((waypoint, index) => (*/}
-      {/*  <li key={index}>*/}
-      {/*    {waypoint.label} (Lat: {waypoint.lat}, Lng: {waypoint.lng}, Timestamp: {waypoint.timestamp})*/}
-      {/*  </li>*/}
-      {/*))}*/}
-
-      {/*<h3>Keywords</h3>*/}
-      {/*{data.Keywords.map((keyword, index) => (*/}
-      {/*  <div key={index}>*/}
-      {/*    <h4>Position: {keyword.pos}</h4>*/}
-
-      {/*    {keyword.data.map((item, idx) => (*/}
-      {/*      <li key={idx}>*/}
-      {/*        <a href={item.url} target="_blank" rel="noopener noreferrer">*/}
-      {/*          {item.title}*/}
-      {/*        </a>*/}
-      {/*      </li>*/}
-      {/*    ))}*/}
-      {/*  </div>*/}
-      {/*))}*/}
       <div className='navBar'>
-      <NitFlexNavBar></NitFlexNavBar>
-
+        <NitFlexNavBar></NitFlexNavBar>
       </div>
       <Container>
         <Row style={{paddingTop: '100px'}}>
@@ -108,9 +71,7 @@ function App() {
           </Col>
         </Row>
 
-      
         <Row style={{ height: '650px', padding: '50px 0px'}}  id='video'>
-          {/* Colonne pour la liste des chapitres */}
           <Col xs={12} md={2} lg={2} xl={2} className="sidebar" style={{ height: '600px'}}>
             <div className="chapitres">
               <Chapitres
@@ -119,7 +80,6 @@ function App() {
             </div>
           </Col>
 
-          {/* Colonne pour le lecteur vidéo */}
           <Col xs={12} md={7} lg={7} xl={7} style={{ margin: '50px 0px'}} >
             <LecteurVideo
               filmLink={data.Film.file_url}
@@ -128,13 +88,11 @@ function App() {
             />
           </Col>
 
-          {/* Colonne pour le futur chat */}
           <Col xs={12} md={3} lg={3} xl={3} style={{ height: '600px'}}>
             <StyleChat username={"Sylvain"}/>
           </Col>
         </Row>
       
-
         <Row>
           <Col xs={12} md={12} lg={12} xl={12}>
             <div>
@@ -159,20 +117,14 @@ function App() {
                   currentTime={currentTime}
                   onMarkerClick={(pos) => handleMarkerClick(pos)}/>
               </Col>
-            </Row>
-              
-            
+            </Row>            
           </div>
         </Row>
-
-        </Container>
-
-
+      </Container>
     <div id='contact'>
       <Footer />
-
     </div>
-    </div>
+  </div>
   );
 }
 

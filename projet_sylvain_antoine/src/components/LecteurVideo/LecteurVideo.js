@@ -1,4 +1,3 @@
-// LecteurVideo.js
 import React, { useRef, useEffect, useState } from 'react';
 import { Player } from 'video-react';
 import "../../../node_modules/video-react/dist/video-react.css";
