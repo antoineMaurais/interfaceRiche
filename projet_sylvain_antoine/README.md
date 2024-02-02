@@ -4,12 +4,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+To start your application in the project directory, follow the steps below. Ensure you're in the correct directory before proceeding:
+
+1. Open a terminal and navigate to your project folder with the command:
+
+### `cd projet_sylvain_antoine`
+
+2. Once in the projet_sylvain_antoine folder, start the application in development mode by running:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This will launch the application, which you can view by opening http://localhost:3000 in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
