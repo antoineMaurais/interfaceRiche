@@ -1,5 +1,6 @@
 import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
+import {MDBCard, MDBCardBody, MDBCardHeader} from "mdb-react-ui-kit";
 
 function formatTime(timestamp) {
   const hours = Math.floor(timestamp / 3600);
@@ -12,21 +13,41 @@ function formatTime(timestamp) {
 function Chapitres({ chapters, onChapterClick }) {
   return (
     <div>
-      <h4 style={{color: "red"}}>Chapitres</h4>
-      <ListGroup>
-        {chapters.map((chapter, index) => (
-          <ListGroup.Item
-            key={index}
-            action
-            onClick={() => onChapterClick(chapter.pos)}
-          >
-            <div>
-              <strong>{chapter.title}</strong>
-              <p>Temps: {formatTime(chapter.pos)}</p>
-            </div>
-          </ListGroup.Item>
-        ))}
-      </ListGroup>
+      {/*<ListGroup>*/}
+      {/*  {chapters.map((chapter, index) => (*/}
+      {/*    <ListGroup.Item*/}
+      {/*      key={index}*/}
+      {/*      action*/}
+      {/*      onClick={() => onChapterClick(chapter.pos)}*/}
+      {/*    >*/}
+      {/*      <div>*/}
+      {/*        <strong>{chapter.title}</strong>*/}
+      {/*        <p>Temps: {formatTime(chapter.pos)}</p>*/}
+      {/*      </div>*/}
+      {/*    </ListGroup.Item>*/}
+      {/*  ))}*/}
+      {/*</ListGroup>*/}
+        <MDBCard id="chat2" style={{ height: "90vh", borderRadius: "15px" }}>
+            <MDBCardHeader className="d-flex justify-content-between align-items-center p-3">
+                <h5 className="mb-0">Chapitres</h5>
+            </MDBCardHeader>
+            <MDBCardBody style={{ maxHeight: "80vh", overflowY: "auto" }}>
+                <ListGroup>
+                  {chapters.map((chapter, index) => (
+                    <ListGroup.Item
+                      key={index}
+                      action
+                      onClick={() => onChapterClick(chapter.pos)}
+                    >
+                      <div>
+                        <strong>{chapter.title}</strong>
+                        <p>Temps: {formatTime(chapter.pos)}</p>
+                      </div>
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+            </MDBCardBody>
+        </MDBCard>
     </div>
   );
 }

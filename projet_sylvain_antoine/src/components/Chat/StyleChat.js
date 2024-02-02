@@ -15,11 +15,11 @@ const StyleChat = ({ username }) => {
         ws.current = new WebSocket('wss://imr3-react.herokuapp.com/');
 
         ws.current.onopen = () => {
-            console.log("connected");
+            // console.log("connected");
         };
 
         ws.current.onmessage = (evt) => {
-            console.log("Message received: ", evt.data);
+            // console.log("Message received: ", evt.data);
             const receivedMessages = JSON.parse(evt.data);
             setMessages((prevMessages) => [...prevMessages, ...receivedMessages]);
         };
@@ -55,11 +55,11 @@ const StyleChat = ({ username }) => {
             <MDBCardBody style={{ maxHeight: "80vh", overflowY: "auto" }}>
                 {/* Message extérieur */}
                 {
-                    [...messages].sort((a, b) => b.when - a.when).map((message) => (
+                    [...messages].sort((a, b) => a.when - b.when).map((message, index) => (
                         message.name === "Sylvain"
                             ?
                              // Message intérieur
-                            <div className="d-flex flex-row justify-content-end mb-4 pt-1">
+                            <div className="d-flex flex-row justify-content-end mb-4 pt-1" key={index}>
                                 <div>
                                     <p className="small p-2 ms-3 mb-1 rounded-3">
                                         {message.name}
@@ -75,26 +75,22 @@ const StyleChat = ({ username }) => {
                                 />
                             </div>
                             :
-                            <div className="d-flex flex-row justify-content-start">
+                            <div className="d-flex flex-row justify-content-start" key={index}>
                                 <img
                                     src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
                                     alt="avatar 1"
                                     style={{ width: "45px", height: "100%" }}
                                 />
-                            <div>
-                            <p className="small p-2 ms-3 mb-1 rounded-3">
-                                {message.name}
-                            </p>
+                                <div>
+                                    <p className="small p-2 ms-3 mb-1 rounded-3">
+                                        {message.name}
+                                    </p>
 
-                            <p className="small p-2 ms-3 mb-1 rounded-3" style={{ backgroundColor: "#f5f6f7" }}>
-                                {message.message}
-                            </p>
-
-                            {/*<p className="small ms-3 mb-3 rounded-3 text-muted">*/}
-                            {/*    23:58*/}
-                            {/*</p>*/}
-                        </div>
-                    </div>
+                                    <p className="small p-2 ms-3 mb-1 rounded-3" style={{ backgroundColor: "#f5f6f7" }}>
+                                        {message.message}
+                                    </p>
+                                </div>
+                            </div>
                 ))}
 
 
@@ -106,15 +102,9 @@ const StyleChat = ({ username }) => {
                     alt="avatar 3"
                     style={{ width: "45px", height: "100%" }}
                 />
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    class="form-control form-control-lg"*/}
-                {/*    id="exampleFormControlInput1"*/}
-                {/*    placeholder="Type message"*/}
-                {/*></input>*/}
                 <input
                     type="text"
-                    class="form-control form-control-lg"
+                    className="form-control form-control-lg"
                     id="exampleFormControlInput1"
                     placeholder="Type message"
                     onKeyDown={(e) => {

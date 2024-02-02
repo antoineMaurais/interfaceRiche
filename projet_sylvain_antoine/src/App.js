@@ -1,5 +1,4 @@
-import './App.css';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getData } from './components/Services/servicesApi';
 import Footer from './components/Footer/Footer';
 import LecteurVideo from './components/LecteurVideo/LecteurVideo';
@@ -11,6 +10,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MapChart from "./components/MapChart/MapChart";
 import StyleChat from "./components/Chat/StyleChat";
+import Button from "react-bootstrap/Button";
+import './App.css';
 
 function App() {
   const [data, setData] = useState({
@@ -57,74 +58,59 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div className='navBar'>
-        <NitFlexNavBar></NitFlexNavBar>
-      </div>
-      <Container>
-        <Row style={{paddingTop: '100px'}}>
-          <Col md={{ span: 4, offset: 4 }}>
-                <h4 style={{color: "red"}}>{data.Film.title}</h4>
-          </Col>
-          <Col md={{ span: 4}}>
-                <a href={data.Film.synopsis_url}>Synopsis</a>
-          </Col>
-        </Row>
+      <div className="App">
+        <div className='navBar'>
+          <NitFlexNavBar></NitFlexNavBar>
+        </div>
+        <Container fluid style={{ paddingTop: '4rem' }}>
+          <Row className="justify-content-md-center" style={{ paddingTop: '2rem' }}>
+            <Col md={8} className="text-center">
+              <h4 style={{ color: "red" }}>{data.Film.title}</h4>
+              <a href={data.Film.synopsis_url}>
+                <Button variant="danger">Synopsis</Button>
+              </a>
+            </Col>
+          </Row>
 
-        <Row style={{ height: '650px', padding: '50px 0px'}}  id='video'>
-          <Col xs={12} md={2} lg={2} xl={2} className="sidebar" style={{ height: '600px'}}>
-            <div className="chapitres">
-              <Chapitres
-                  chapters={data.Chapters}
-                  onChapterClick={(pos) => handleChapterClick(pos)} />
-            </div>
-          </Col>
+          <Row style={{ paddingTop: '2rem', paddingBottom: '2rem' }} className="align-items-start">
+            <Col md={2}>
+              <Chapitres chapters={data.Chapters} onChapterClick={handleChapterClick} />
+            </Col>
 
-          <Col xs={12} md={7} lg={7} xl={7} style={{ margin: '50px 0px'}} >
-            <LecteurVideo
-              filmLink={data.Film.file_url}
-              initialTime={selectedChapter}
-              onTimeUpdate={handleTimeUpdate}
-            />
-          </Col>
+            <Col md={7} id='video'>
+              <LecteurVideo
+                  filmLink={data.Film.file_url}
+                  initialTime={selectedChapter}
+                  onTimeUpdate={handleTimeUpdate}
+              />
+            </Col>
 
-          <Col xs={12} md={3} lg={3} xl={3} style={{ height: '600px'}}>
-            <StyleChat username={"Sylvain"}/>
-          </Col>
-        </Row>
-      
-        <Row>
-          <Col xs={12} md={12} lg={12} xl={12}>
-            <div>
-              <MotsCles
-                  keywords={data.Keywords}
-                  currentTime={currentTime} />
-            </div>
-          </Col>
-        </Row>
+            <Col md={3}>
+              <StyleChat username={"Sylvain"}/>
+            </Col>
+          </Row>
 
-        <Row>
-          <div id='map' style={{marginTop: '20px'}}>
-            <Row>
-              <Col md={{ span: 4, offset: 2 }}>
-                <h4 style={{color: "red"}}>Carte du road trip</h4>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={{ span: 8, offset: 2 }}>
-                <MapChart
+          <Row>
+            <Col>
+              <MotsCles keywords={data.Keywords} currentTime={currentTime} />
+            </Col>
+          </Row>
+
+          <Row className="justify-content-md-center" style={{ marginTop: '2rem' }} id='map'>
+            <Col md={8}>
+              <h4 style={{ color: "red" }}>Carte du road trip</h4>
+              <MapChart
+                  id="map"
                   waypoints={data.Waypoints}
                   currentTime={currentTime}
-                  onMarkerClick={(pos) => handleMarkerClick(pos)}/>
-              </Col>
-            </Row>            
-          </div>
-        </Row>
-      </Container>
-    <div id='contact'>
-      <Footer />
-    </div>
-  </div>
+                  onMarkerClick={handleMarkerClick}/>
+            </Col>
+          </Row>
+        </Container>
+        <div id='contact'>
+          <Footer />
+        </div>
+      </div>
   );
 }
 

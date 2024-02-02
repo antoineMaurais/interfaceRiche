@@ -8,11 +8,11 @@ const ChatComponent = ({ username }) => {
         ws.current = new WebSocket('wss://imr3-react.herokuapp.com/');
 
         ws.current.onopen = () => {
-            console.log("connected");
+            // console.log("connected");
         };
 
         ws.current.onmessage = (evt) => {
-            console.log("Message received: ", evt.data);
+            // console.log("Message received: ", evt.data);
             const receivedMessages = JSON.parse(evt.data);
             setMessages((prevMessages) => [...prevMessages, ...receivedMessages]);
         };
